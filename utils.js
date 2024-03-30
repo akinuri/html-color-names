@@ -37,7 +37,7 @@ function convertHexToString(
     return string;
 }
 
-function convertRgbToHsl(rgb) {
+function convertRgbToHsl(rgb, precision = 2) {
     let { red, green, blue, alpha } = rgb;
     red /= 255;
     green /= 255;
@@ -65,9 +65,12 @@ function convertRgbToHsl(rgb) {
                 break;
         }
     }
-    hue = Math.round(hue * 60);
-    saturation = Math.round(saturation * 100);
-    lightness = Math.round(lightness * 100);
+    hue = hue * 60;
+    saturation = saturation * 100;
+    lightness = lightness * 100;
+    hue = hue.toFixed(precision);
+    saturation = saturation.toFixed(precision);
+    lightness = lightness.toFixed(precision);
     return { hue, saturation, lightness, alpha };
 }
 
