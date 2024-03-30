@@ -82,3 +82,11 @@ function convertHslToString(hsl) {
     return string;
 }
 
+function calcLuma(rgb, precision = 2) {
+    let [red, green, blue] = rgb;
+    let luma = (red * 0.299) + (green * 0.587) + (blue * 0.114);
+    luma /= 255;
+    luma *= 100;
+    luma = luma.toFixed(precision);
+    return luma;
+}
